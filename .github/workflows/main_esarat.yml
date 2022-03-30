@@ -8,7 +8,7 @@ on:
     branches:
       - main
     paths:
-      - one/two/my-app/
+      - ./one/two/my-app/
   workflow_dispatch:
 
 jobs:
@@ -27,13 +27,13 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-        working-directory: one/two/my-app
+        working-directory: ./one/two/my-app
         
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: one/two/my-app/build/
+          path: ./one/two/my-app/build/
 
   deploy:
     runs-on: ubuntu-latest
